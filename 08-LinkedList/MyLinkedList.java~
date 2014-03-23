@@ -97,10 +97,19 @@ public class MyLinkedList{
 	while(i > 2)
 	    tmp = tmp.getNext();
 	tmp.setNext(tmp.getNext().getNext());
+	length --;
 	return thing;
     }
 
-
+    public int find(String s){
+	Node temp = head;
+	int count = 0;
+	while(!temp.getData().equals(s) && temp.getNext() != null){
+	    temp = temp.getNext();
+	    count ++;
+	}
+	return count;
+    }
 
 
 }
