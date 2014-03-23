@@ -12,6 +12,7 @@ public class MyLinkedList{
 
     public MyLinkedList(Node n){
 	head = n;
+	length = 1;
     }
 
     public String toString(){
