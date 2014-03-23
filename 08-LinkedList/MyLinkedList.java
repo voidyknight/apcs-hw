@@ -93,10 +93,18 @@ public class MyLinkedList{
 	    return null;
 	}
 	String thing = get(i);
+	if(i == 0){
+	    length --;
+	    head = head.getNext();
+	    return thing;
+	}
 	Node tmp = head;
 	while(i > 2)
 	    tmp = tmp.getNext();
-	tmp.setNext(tmp.getNext().getNext());
+	if(tmp.getNext() != null)
+	    tmp.setNext(tmp.getNext().getNext());
+	else
+	    tmp.setNext(null);
 	length --;
 	return thing;
     }
