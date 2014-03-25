@@ -1,5 +1,5 @@
 public class MyLinkedList{
-    private Node head, dummy;
+    private Node head, dummy, tail;
     //the head is the first node
     private int length;
 
@@ -11,15 +11,27 @@ public class MyLinkedList{
 	return head;
     }
 
+    public Node getTail(){
+	return tail;
+    }
+
+    public int length(){
+	return length;
+    }
+
+
+
+
     //Constructors
     public MyLinkedList(){
-	head = new Node("");
+	head = null;
 	dummy = new Node("dummy"); dummy.setNext(head);
 	length = 0;
     }
 
     public MyLinkedList(Node n){
 	head = n;
+	tail = head;
 	dummy = new Node("dummy"); dummy.setNext(head);
 	length = 1;
     }
@@ -34,9 +46,6 @@ public class MyLinkedList{
 	return s;
     }
 
-    public int length(){
-	return length;
-    }
 
 
 
@@ -48,6 +57,8 @@ public class MyLinkedList{
 	tmp.setNext(head);  //Do first: set new next
 	head = tmp;        //Do second: change the head
 	length ++;
+	if(length == 1)
+	    tail = head;
 	dummy.setNext(head);
     }
 
@@ -55,19 +66,32 @@ public class MyLinkedList{
 	if(i == 0){
 	    add(s);
 	    dummy.setNext(head);
+	    return;
 	}
-	else if(i >= length)
+	if(i == length - 1){
+	    addEnd(s);
+	    return;
+	}
+	if(i >= length){
 	    System.out.println("Error: out of bounds");
-	else{
-	    Node place = head;
-	    while(i > 1){
-		place = place.getNext();
-		i --;
-	    }
-	    Node tmp = place.getNext();
-	    place.setNext(new Node(s));
-	    place.getNext().setNext(tmp);
+	    return;
 	}
+	
+	Node place = head;
+	while(i > 1){
+	    place = place.getNext();
+	    i --;
+	}
+	Node tmp = place.getNext();
+	place.setNext(new Node(s));
+	place.getNext().setNext(tmp);
+	 
+	length ++;
+    }
+
+    public void addEnd(String s){
+	tail.setNext(new Node(s));
+	tail = tail.getNext();
 	length ++;
     }
 
@@ -107,16 +131,26 @@ public class MyLinkedList{
 	    return null;
 	}
 	String thing = get(i);
+	if(i == 0){
+	    dummy.setNext(head.getNext());
+	    head = dummy.getNext();
+	    return thing;
+	}
 	Node tmp = head;
+	int x = i;
 	while(i > 0){
 	    tmp = tmp.getNext();
 	    dummy = dummy.getNext();
 	    i --;
 	}
-	    dummy.setNext(tmp.getNext());
+	dummy.setNext(tmp.getNext());
+	if(tmp == tail)
+	    tail = dummy;
 	length --;
-	dummy = new Node("dummy");
-	dummy.setNext(head);
+	if(x != 0){
+	    dummy = new Node("dummy");
+	    dummy.setNext(head);
+	}
 	return thing;
     }
 

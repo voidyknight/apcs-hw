@@ -1,17 +1,27 @@
 public class MyLinkedList{
-    private Node head;
+    private Node head, dummy;
     //the head is the first node
     private int length;
 
-   
+    public Node getDummy(){
+	return dummy;
+    }   
+
+    public Node getHead(){
+	return head;
+    }
+
     //Constructors
     public MyLinkedList(){
-	head = null;
+	head = new Node("");
+	dummy = new Node("dummy"); dummy.setNext(head);
 	length = 0;
     }
 
     public MyLinkedList(Node n){
 	head = n;
+	dummy = new Node("dummy"); dummy.setNext(head);
+	length = 1;
     }
 
     public String toString(){
@@ -38,11 +48,14 @@ public class MyLinkedList{
 	tmp.setNext(head);  //Do first: set new next
 	head = tmp;        //Do second: change the head
 	length ++;
+	dummy.setNext(head);
     }
 
     public void add(int i, String s){
-	if(i == 0)
+	if(i == 0){
 	    add(s);
+	    dummy.setNext(head);
+	}
 	else if(i >= length)
 	    System.out.println("Error: out of bounds");
 	else{
@@ -84,6 +97,7 @@ public class MyLinkedList{
 	    tmp = tmp.getNext();
 	newNode.setNext(tmp.getNext().getNext());
 	tmp.setNext(newNode);
+	dummy.setNext(head);
 	return thing;
     }
 
@@ -94,10 +108,15 @@ public class MyLinkedList{
 	}
 	String thing = get(i);
 	Node tmp = head;
-	while(i > 2)
+	while(i > 0){
 	    tmp = tmp.getNext();
-	tmp.setNext(tmp.getNext().getNext());
+	    dummy = dummy.getNext();
+	    i --;
+	}
+	    dummy.setNext(tmp.getNext());
 	length --;
+	dummy = new Node("dummy");
+	dummy.setNext(head);
 	return thing;
     }
 

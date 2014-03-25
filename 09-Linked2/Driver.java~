@@ -15,8 +15,12 @@ public class Driver{
 	System.out.println(L.set(1, "notBob"));
 	System.out.println(L);
 	System.out.println(L.remove(1));
+	System.out.println(L + " s");
+	System.out.println(L.getDummy());
+	System.out.println(L.remove(0));
 	System.out.println(L);
-
+	L.addEnd("Greg");
+	System.out.println(L); 
     }
 
 
