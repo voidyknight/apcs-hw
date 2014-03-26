@@ -21,17 +21,22 @@ public class MyLinkedList<E> implements Iterable<E>{
 	return length;
     }
 
+    public LLIterator<E> iterator(){
+	//fix later
+	return new LLIterator<E>();
+    }
+
 
 
 
     //Constructors
-    public MyLinkedList<E>(){
+    public MyLinkedList(){
 	head = null;
 	dummy = new Node<E>("dummy"); dummy.setNext(head);
 	length = 0;
     }
 
-    public MyLinkedList<E>(Node<E> n){
+    public MyLinkedList(Node<E> n){
 	head = n;
 	tail = head;
 	dummy = new Node<E>("dummy"); dummy.setNext(head);
