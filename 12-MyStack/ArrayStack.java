@@ -22,9 +22,8 @@ public class ArrayStack{
 
     public String toString(){
 	String s = "";
-	for(String x : array){
-	    if(x != null)
-		s = x + ", " + s;
+	for(int x = index; x > -1; x --){
+	    s += x + ", ";
 	}
 	return s;
     }
@@ -38,7 +37,6 @@ public class ArrayStack{
 
     public String pop(){
 	String keeper = top;
-        array[index] = null;
 	index --;
 	top = array[index];
 	return keeper;

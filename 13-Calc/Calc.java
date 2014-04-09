@@ -34,7 +34,8 @@ public class Calc{
 	    return v1 % v2;
 	if(s.equals("^"))
 	    return Math.pow(v1, v2);
-	return v1;
+	System.out.println("Unknown operator");
+	return 0.0;
     }
 
 
