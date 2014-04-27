@@ -1,0 +1,42 @@
+public class BST{
+   private Node root;
+
+    public BST() {
+        root = null;
+    }
+
+    public void insert(int x){
+	Node tmp = root;
+	Node trail = new Node(0, tmp,tmp);
+	while(tmp != null){
+	    if (x < tmp.getData())
+		tmp = tmp.getLeft();
+	    else
+		tmp = tmp.getRight();
+	}
+	trail.getLeft() = new Node(x, null, null);
+    }
+
+
+	
+
+
+}
+
+public class Node {
+    private int data;
+    private Node left,right;
+
+    public Node(int d, Node l, Node r){
+	data = d; left = l; right = r;
+    }
+
+    public void setData(int d){ data = d;}
+    public int getData(){ return data;}
+
+    public void setLeft(Node l){ left = l;}
+    public Node getLeft(){ return l;}
+
+    public void setRight(Node r){ right = r;}
+    public Node getRight(){ return right;}
+}
