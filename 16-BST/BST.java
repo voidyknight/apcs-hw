@@ -52,6 +52,39 @@ public class BST{
 	    return c;
 	}
 
+    public void delete(int x){
+	Node tmp = root;
+	Node trail = new Node(Integer.MIN_VALUE, tmp,tmp);
+	while(tmp.getData() != x){
+	    trail = tmp;
+	    if (x < tmp.getData())
+		tmp = tmp.getLeft();
+	    else
+		tmp = tmp.getRight();
+	    if (tmp == null)
+		return;
+	}
+	if(tmp.getLeft() == null){
+	    if(trail.getLeft() != null && trail.getLeft().getData() == tmp.getData())
+		trail.setLeft(tmp.getRight());
+	    else
+		trail.setRight(tmp.getRight());
+	}
+	else if(tmp.getRight() == null){
+	    if(trail.getLeft() != null && trail.getLeft().getData() == tmp.getData())
+		trail.setLeft(tmp.getLeft());
+	    else
+		trail.setRight(tmp.getLeft());
+	}
+	else{
+	    Node n = tmp.getRight();
+	    while(n.getLeft() != null)
+		n = n.getLeft();
+	    tmp.setData(n.getData());
+	    delete(n.getData());
+	}
+    }
+    
 
 	
 
