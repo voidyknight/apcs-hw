@@ -85,6 +85,22 @@ public class BST{
 	}
     }
     
+    public void Traverse(){
+	if (root == null){
+	    System.out.println("null");
+	    return;
+	}
+	System.out.println(traverseWork(root));
+    }
+
+    public String traverseWork(Node n){
+	String s = "" + n.getData();
+	if (n.getLeft() != null)
+	    s += " " + traverseWork(n.getLeft());
+	if(n.getRight() != null)
+	    s += " " + traverseWork(n.getRight());
+	return s;
+    }
 
 	
 
