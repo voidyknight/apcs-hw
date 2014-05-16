@@ -18,6 +18,9 @@ public class MaxHeap{
     public int getMax(){
 	return arr[1];
     }    
+    public int getLR(){
+	return lowRight;
+    }
 
 
     public void insert(int n){

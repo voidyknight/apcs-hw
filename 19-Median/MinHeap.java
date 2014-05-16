@@ -8,6 +8,10 @@ public class MinHeap{
 	lowRight = 0;
     }
 
+    public int getLR(){
+	return lowRight;
+    }
+
     public MinHeap(int n){
 	arr = new int[11]; 
 	arr[1] = n ;
@@ -35,7 +39,7 @@ public class MinHeap{
 	}
     }
 
-    public void removeMax(){
+    public void removeMin(){
 	arr[1] = arr[lowRight];
 	arr[lowRight --] = 0;
 	int place = 1;
