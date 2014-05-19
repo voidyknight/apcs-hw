@@ -1,0 +1,11 @@
+import java.util.*;
+public class Driver{
+
+    public static void main(String[]args){
+	String a = "3 2 /";
+	Calc b =new Calc();
+	int s = 3/2;
+	System.out.println(s);
+
+    }
+}
